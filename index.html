@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Elegance Boutique - premium women’s fashion boutique featuring timeless styles, curated collections, and elegant occasion wear."
+    />
+    <title>Elegance Boutique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --blush: #f9e8ea;
+        --blush-strong: #f2d4d7;
+        --rose-gold: #c78f8d;
+        --rose-gold-deep: #a86865;
+        --cream: #fffaf7;
+        --ivory: #f6f2ee;
+        --text: #2f2527;
+        --muted: #6f5d62;
+        --white: #ffffff;
+        --shadow: 0 18px 38px rgba(80, 44, 49, 0.12);
+        --soft-shadow: 0 12px 28px rgba(111, 93, 98, 0.10);
+        --radius-lg: 30px;
+        --radius-md: 18px;
+        --radius-sm: 12px;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(180deg, #fffaf8 0%, #fffdfd 100%);
+        color: var(--text);
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button, input { font: inherit; }
+
+      .container {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .announcement-bar {
+        background: linear-gradient(90deg, #efced1, #f7e9ea, #e6c9d0);
+        color: #3b2a2d;
+        text-align: center;
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 10px 16px;
+        font-weight: 600;
+      }
+
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(120, 82, 84, 0.08);
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 84px;
+        gap: 18px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-deep));
+        display: grid;
+        place-items: center;
+        color: var(--white);
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .brand-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(1.7rem, 2vw, 2.2rem);
+        font-weight: 700;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 0.94rem;
+        font-weight: 500;
+      }
+
+      .nav-links a {
+        position: relative;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a::after {
+        content: "";
+        width: 0;
+        height: 2px;
+        background: var(--rose-gold);
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        transition: width 0.25s ease;
+      }
+
+      .nav-links a:hover { color: var(--text); }
+      .nav-links a:hover::after { width: 100%; }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .icon-button {
+        position: relative;
+        border: 1px solid rgba(118, 89, 94, 0.12);
+        background: var(--white);
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        color: var(--text);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .icon-button:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--soft-shadow);
+      }
+
+      .count-badge {
+        position: absolute;
+        top: -5px;
+        right: -3px;
+        min-width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        background: var(--rose-gold-deep);
+        color: white;
+        display: grid;
+        place-items: center;
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+
+      .mobile-menu {
+        display: none;
+      }
+
+      .hero {
+        position: relative;
+        padding: 44px 0 30px;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 20% 20%, rgba(244, 209, 214, 0.8), transparent 32%),
+          radial-gradient(circle at 80% 0%, rgba(214, 149, 151, 0.2), transparent 30%);
+        z-index: -1;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 36px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(124, 81, 84, 0.1);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--rose-gold-deep);
+        font-weight: 700;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-deep));
+      }
+
+      h1, h2, h3 {
+        margin: 0;
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(3.2rem, 6vw, 6rem);
+        line-height: 0.9;
+        margin-top: 22px;
+        color: var(--text);
+      }
+
+      .hero-copy p {
+        font-size: 1.08rem;
+        color: var(--muted);
+        line-height: 1.7;
+        max-width: 560px;
+        margin: 18px 0 28px;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: none;
+        border-radius: 999px;
+        padding: 15px 24px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover { transform: translateY(-2px); }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-deep));
+        color: var(--white);
+        box-shadow: 0 14px 28px rgba(176, 103, 99, 0.22);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.75);
+        border: 1px solid rgba(124, 81, 84, 0.12);
+        color: var(--text);
+      }
+
+      .hero-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      .stat-box {
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(124, 81, 84, 0.08);
+        border-radius: 18px;
+        padding: 16px 18px;
+        min-width: 120px;
+      }
+
+      .stat-number {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: var(--text);
+      }
+
+      .stat-label {
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .hero-visual {
+        position: relative;
+        padding: 18px;
+      }
+
+      .hero-card {
+        position: relative;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 243, 245, 0.9));
+        border: 1px solid rgba(124, 81, 84, 0.1);
+        border-radius: 42px;
+        padding: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .visual-frame {
+        position: relative;
+        border-radius: 30px;
+        overflow: hidden;
+        background: #fef9f7;
+      }
+
+      .visual-frame img {
+        width: 100%;
+        height: 680px;
+        object-fit: cover;
+      }
+
+      .floating-tag {
+        position: absolute;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(124, 81, 84, 0.08);
+        padding: 14px 16px;
+        box-shadow: var(--soft-shadow);
+        animation: float 4s ease-in-out infinite;
+      }
+
+      .floating-tag strong {
+        display: block;
+        font-size: 1.1rem;
+        font-weight: 800;
+      }
+
+      .floating-tag span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .floating-top { top: 18px; right: 18px; }
+      .floating-bottom { bottom: 18px; left: 18px; }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      .section {
+        padding: 90px 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 28px;
+      }
+
+      .section-head h2 {
+        font-size: clamp(2.5rem, 4vw, 4rem);
+        color: var(--text);
+      }
+
+      .subtitle {
+        max-width: 560px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .category-card {
+        position: relative;
+        border-radius: 28px;
+        overflow: hidden;
+        min-height: 260px;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .category-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .category-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(46, 25, 29, 0.08), rgba(35, 18, 20, 0.6));
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        padding: 22px;
+        color: var(--white);
+      }
+
+      .category-card h3 {
+        font-size: clamp(2rem, 2.2vw, 2.6rem);
+        line-height: 1;
+      }
+
+      .category-card span {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 12px;
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0.95;
+      }
+
+      .category-card span::after {
+        content: "→";
+        font-size: 1.2rem;
+      }
+
+      .shop-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 20px;
+      }
+
+      .filter-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .chip {
+        border: 1px solid rgba(124, 81, 84, 0.1);
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--muted);
+        border-radius: 999px;
+        padding: 11px 18px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .chip.active, .chip:hover {
+        background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-deep));
+        color: var(--white);
+        border-color: transparent;
+        box-shadow: 0 10px 20px rgba(176, 103, 99, 0.18);
+      }
+
+      .search-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(124, 81, 84, 0.1);
+        border-radius: 999px;
+        padding: 10px 16px;
+        min-width: min(100%, 320px);
+      }
+
+      .search-box input {
+        border: none;
+        background: transparent;
+        outline: none;
+        flex: 1;
+        min-width: 0;
+        color: var(--text);
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .product-card {
+        background: rgba(255,255,255,0.75);
+        border: 1px solid rgba(124, 81, 84, 0.08);
+        border-radius: 26px;
+        overflow: hidden;
+        box-shadow: var(--soft-shadow);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow);
+      }
+
+      .product-image-wrap {
+        position: relative;
+        overflow: hidden;
+        background: #f9f0ef;
+      }
+
+      .product-image-wrap img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        transition: transform 0.35s ease;
+      }
+
+      .product-card:hover .product-image-wrap img {
+        transform: scale(1.04);
+      }
+
+      .wishlist-btn {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 38px;
+        height: 38px;
+        border: none;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.88);
+        display: grid;
+        place-items: center;
+        color: #b06d72;
+        font-size: 1.1rem;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      .wishlist-btn.active {
+        background: rgba(199, 143, 141, 0.14);
+        color: #a34c57;
+      }
+
+      .product-body {
+        padding: 18px 18px 20px;
+      }
+
+      .product-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 8px;
+      }
+
+      .product-category {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--rose-gold-deep);
+        font-weight: 700;
+      }
+
+      .product-price {
+        font-weight: 800;
+        font-size: 1.2rem;
+        color: var(--text);
+      }
+
+      .product-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2rem;
+        margin: 4px 0 14px;
+      }
+
+      .product-actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      .product-btn {
+        flex: 1;
+        border-radius: 14px;
+        padding: 12px 12px;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .btn-light {
+        background: rgba(244, 213, 217, 0.24);
+        color: var(--text);
+      }
+
+      .btn-dark {
+        background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-deep));
+        color: var(--white);
+      }
+
+      .promo-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .promo-card {
+        background: linear-gradient(135deg, rgba(249, 232, 234, 0.68), rgba(255,255,255,0.92));
+        border: 1px solid rgba(124,81,84,0.08);
+        border-radius: 26px;
+        padding: 26px;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .promo-card .tag {
+        display: inline-block;
+        padding: 7px 12px;
+        background: rgba(255,255,255,0.7);
+        border-radius: 999px;
+        color: var(--rose-gold-deep);
+        font-size: 0.73rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .promo-card h3 {
+        font-size: 2.4rem;
+        margin: 16px 0 8px;
+      }
+
+      .promo-card p {
+        color: var(--muted);
+        line-height: 1.7;
+        margin: 0;
+      }
+
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .testimonial-card {
+        background: rgba(255,255,255,0.78);
+        border: 1px solid rgba(124,81,84,0.08);
+        border-radius: 26px;
+        padding: 24px;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .stars {
+        color: #d39b68;
+        letter-spacing: 0.12em;
+        font-size: 0.92rem;
+      }
+
+      .testimonial-text {
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.8;
+        margin: 18px 0;
+      }
+
+      .reviewer {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .reviewer img {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .reviewer strong {
+        display: block;
+        font-size: 0.96rem;
+      }
+
+      .reviewer span {
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .newsletter {
+        background: linear-gradient(135deg, rgba(249, 232, 234, 0.9), rgba(255,255,255,0.92));
+        border-radius: 34px;
+        border: 1px solid rgba(124,81,84,0.08);
+        padding: clamp(26px, 5vw, 52px);
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .newsletter h2 {
+        font-size: clamp(2.8rem, 4vw, 4rem);
+        margin-bottom: 10px;
+      }
+
+      .newsletter p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+        max-width: 520px;
+      }
+
+      .newsletter-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        min-width: 220px;
+        border: 1px solid rgba(124,81,84,0.1);
+        background: rgba(255,255,255,0.8);
+        border-radius: 999px;
+        padding: 16px 18px;
+        outline: none;
+      }
+
+      .form-msg {
+        flex-basis: 100%;
+        margin-top: 6px;
+        font-size: 0.85rem;
+        color: var(--rose-gold-deep);
+      }
+
+      .about-grid,
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .about-visual img,
+      .contact-card {
+        border-radius: 32px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .about-visual img {
+        width: 100%;
+        height: 100%;
+        min-height: 520px;
+        object-fit: cover;
+      }
+
+      .info-card {
+        background: rgba(255,255,255,0.78);
+        border: 1px solid rgba(124,81,84,0.08);
+        border-radius: 30px;
+        padding: 28px;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .info-card h3 {
+        font-size: clamp(2.2rem, 3vw, 3rem);
+        margin-bottom: 16px;
+      }
+
+      .info-card p,
+      .contact-item {
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 22px 0 0;
+        display: grid;
+        gap: 12px;
+      }
+
+      .feature-list li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      .feature-list li::before {
+        content: "✓";
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: rgba(199,143,141,0.15);
+        color: var(--rose-gold-deep);
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+      }
+
+      .contact-card {
+        background: linear-gradient(135deg, rgba(249,232,234,0.8), rgba(255,255,255,0.92));
+        padding: 28px;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 18px;
+        margin-top: 22px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--text);
+      }
+
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,0.72);
+        border: 1px solid rgba(124,81,84,0.08);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--rose-gold-deep);
+        font-size: 1.1rem;
+      }
+
+      footer {
+        padding: 30px 0 80px;
+      }
+
+      .footer-wrap {
+        border-top: 1px solid rgba(124,81,84,0.08);
+        padding-top: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .socials {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .socials a {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: rgba(249,232,234,0.6);
+        border: 1px solid rgba(124,81,84,0.08);
+        display: grid;
+        place-items: center;
+        color: var(--rose-gold-deep);
+      }
+
+      .hidden { display: none !important; }
+
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(33, 22, 24, 0.48);
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        z-index: 90;
+      }
+
+      .modal.hidden { display: none; }
+
+      .modal-card {
+        width: min(700px, 100%);
+        background: rgba(255,255,255,0.98);
+        border-radius: 28px;
+        overflow: hidden;
+        border: 1px solid rgba(124,81,84,0.08);
+        box-shadow: var(--shadow);
+      }
+
+      .modal-contents {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .modal-contents img {
+        width: 100%;
+        height: 100%;
+        min-height: 430px;
+        object-fit: cover;
+      }
+
+      .modal-copy {
+        padding: 28px;
+      }
+
+      .close-btn {
+        border: none;
+        background: rgba(249,232,234,0.8);
+        color: var(--text);
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        margin-left: auto;
+      }
+
+      .modal-copy .eyebrow {
+        padding: 8px 12px;
+        font-size: 0.65rem;
+      }
+
+      .modal-copy h3 {
+        font-size: clamp(2.3rem, 3vw, 3.2rem);
+        margin: 18px 0 8px;
+      }
+
+      .modal-copy p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .size-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 20px 0;
+      }
+
+      .size-box {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        border: 1px solid rgba(124,81,84,0.14);
+        background: rgba(255,255,255,0.8);
+        display: grid;
+        place-items: center;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .size-box.active {
+        background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-deep));
+        border-color: transparent;
+        color: white;
+      }
+
+      .modal-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      @media (max-width: 980px) {
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .hero-grid,
+        .newsletter,
+        .about-grid,
+        .contact-grid,
+        .modal-contents {
+          grid-template-columns: 1fr;
+        }
+
+        .visual-frame img {
+          height: 560px;
+        }
+
+        .products-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .categories-grid,
+        .promo-row,
+        .testimonial-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .announcement-bar {
+          font-size: 0.7rem;
+          letter-spacing: 0.06em;
+        }
+
+        .nav-inner {
+          min-height: 72px;
+        }
+
+        .brand-text {
+          font-size: 1.5rem;
+        }
+
+        .hero {
+          padding-top: 24px;
+        }
+
+        .hero-copy h1 {
+          font-size: 2.9rem;
+        }
+
+        .hero-stats {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .categories-grid,
+        .promo-row,
+        .testimonial-grid,
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .shop-controls {
+          align-items: stretch;
+        }
+
+        .search-box {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .newsletter-form {
+          justify-content: stretch;
+        }
+
+        .newsletter-form .btn {
+          width: 100%;
+        }
+
+        .modal-copy {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="announcement-bar">Free shipping on orders above ₹2,499 • New festive collection now live</div>
+
+    <header class="navbar">
+      <div class="container nav-inner">
+        <a href="#top" class="brand" aria-label="Elegance Boutique home">
+          <div class="brand-mark">E</div>
+          <div class="brand-text">Elegance Boutique</div>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#top">Home</a>
+          <a href="#shop">Shop</a>
+          <a href="#collections">Collections</a>
+          <a href="#about">About Us</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions" aria-label="Quick actions">
+          <button class="icon-button" aria-label="Search products">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button class="icon-button" aria-label="Wishlist" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 20.25s-7.5-4.35-9.6-8.8C.48 9.08 2.09 4.25 6.63 4.25c2.13 0 3.31 1.09 4.03 2.18.72-1.09 1.9-2.18 4.03-2.18 4.54 0 6.15 4.83 4.23 7.7-2.1 4.45-9.6 8.8-9.6 8.8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            </svg>
+            <span class="count-badge" id="wishlistCount">0</span>
+          </button>
+          <button class="icon-button" aria-label="Shopping cart" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3 4h2l2.2 9.2a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 .98-.8L19 7H7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="10" cy="18" r="1.4" fill="currentColor"/>
+              <circle cx="17" cy="18" r="1.4" fill="currentColor"/>
+            </svg>
+            <span class="count-badge" id="cartCount">0</span>
+          </button>
+          <button class="icon-button mobile-menu" aria-label="Open menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Curated couture</span>
+            <h1>Discover Your Elegance.</h1>
+            <p>
+              Timeless styles for every occasion. Discover luxury silhouettes,
+              graceful textures, and statement pieces designed to make every moment feel special.
+            </p>
+
+            <div class="cta-row">
+              <a href="#shop" class="btn btn-primary">Shop Now</a>
+              <a href="#collections" class="btn btn-secondary">Explore Collection</a>
+            </div>
+
+            <div class="hero-stats" aria-label="Store stats">
+              <div class="stat-box">
+                <div class="stat-number">10k+</div>
+                <div class="stat-label">Happy clients</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">250+</div>
+                <div class="stat-label">Curated looks</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">4.9/5</div>
+                <div class="stat-label">Customer rating</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Featured fashion photo">
+            <div class="hero-card">
+              <div class="visual-frame">
+                <img
+                  src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80"
+                  alt="Woman wearing elegant boutique clothing"
+                />
+              </div>
+              <div class="floating-tag floating-top">
+                <strong>Festive Edit</strong>
+                <span>New arrivals</span>
+              </div>
+              <div class="floating-tag floating-bottom">
+                <strong>Up to 40% Off</strong>
+                <span>Seasonal sale</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="collections">
+        <div class="container">
+          <div class="section-head">
+            <h2>Shop by Category</h2>
+            <p class="subtitle">Elegant essentials for every style story — from festive heirlooms to relaxed everyday moments.</p>
+          </div>
+
+          <div class="categories-grid">
+            <article class="category-card">
+              <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=80" alt="Sarees collection" />
+              <div class="category-overlay">
+                <h3>Sarees</h3>
+                <span>Explore</span>
+              </div>
+            </article>
+
+            <article class="category-card">
+              <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80" alt="Kurtis collection" />
+              <div class="category-overlay">
+                <h3>Kurtis</h3>
+                <span>Explore</span>
+              </div>
+            </article>
+
+            <article class="category-card">
+              <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80" alt="Dresses collection" />
+              <div class="category-overlay">
+                <h3>Dresses</h3>
+                <span>Explore</span>
+              </div>
+            </article>
+
+            <article class="category-card">
+              <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Western wear collection" />
+              <div class="category-overlay">
+                <h3>Western Wear</h3>
+                <span>Explore</span>
+              </div>
+            </article>
+
+            <article class="category-card">
+              <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80" alt="Ethnic wear collection" />
+              <div class="category-overlay">
+                <h3>Ethnic Wear</h3>
+                <span>Explore</span>
+              </div>
+            </article>
+
+            <article class="category-card">
+              <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Tops and tunics collection" />
+              <div class="category-overlay">
+                <h3>Tops &amp; Tunics</h3>
+                <span>Explore</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="shop">
+        <div class="container">
+          <div class="section-head">
+            <h2>Featured Collection</h2>
+            <p class="subtitle">Sample prices for boutique planning and live preview. Easily replace with your own collections and pricing later.</p>
+          </div>
+
+          <div class="shop-controls">
+            <div class="filter-group" aria-label="Product filters">
+              <button class="chip active" data-filter="all" type="button">All</button>
+              <button class="chip" data-filter="ethnic" type="button">Ethnic</button>
+              <button class="chip" data-filter="western" type="button">Western</button>
+              <button class="chip" data-filter="casual" type="button">Casual</button>
+              <button class="chip" data-filter="festive" type="button">Festive</button>
+            </div>
+
+            <label class="search-box" aria-label="Search products">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2"/>
+                <path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <input id="searchInput" type="search" placeholder="Search product" aria-label="Search products" />
+            </label>
+          </div>
+
+          <div class="products-grid" id="productGrid">
+            <article class="product-card" data-category="ethnic" data-name="Designer Saree">
+              <div class="product-image-wrap">
+                <button class="wishlist-btn" type="button" aria-label="Add Designer Saree to wishlist">♡</button>
+                <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=900&q=80" alt="Designer Saree" />
+              </div>
+              <div class="product-body">
+                <div class="product-row">
+                  <span class="product-category">Ethnic</span>
+                  <span class="product-price">₹1,499</span>
+                </div>
+                <h3 class="product-name">Designer Saree</h3>
+                <div class="product-actions">
+                  <button class="product-btn btn-light" type="button" data-action="details">View Details</button>
+                  <button class="product-btn btn-dark" type="button" data-action="cart">Add to Cart</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card" data-category="casual" data-name="Floral Kurti">
+              <div class="product-image-wrap">
+                <button class="wishlist-btn" type="button" aria-label="Add Floral Kurti to wishlist">♡</button>
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80" alt="Floral Kurti" />
+              </div>
+              <div class="product-body">
+                <div class="product-row">
+                  <span class="product-category">Casual</span>
+                  <span class="product-price">₹799</span>
+                </div>
+                <h3 class="product-name">Floral Kurti</h3>
+                <div class="product-actions">
+                  <button class="product-btn btn-light" type="button" data-action="details">View Details</button>
+                  <button class="product-btn btn-dark" type="button" data-action="cart">Add to Cart</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card" data-category="western" data-name="Party Wear Dress">
+              <div class="product-image-wrap">
+                <button class="wishlist-btn" type="button" aria-label="Add Party Wear Dress to wishlist">♡</button>
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80" alt="Party Wear Dress" />
+              </div>
+              <div class="product-body">
+                <div class="product-row">
+                  <span class="product-category">Western</span>
+                  <span class="product-price">₹1,299</span>
+                </div>
+                <h3 class="product-name">Party Wear Dress</h3>
+                <div class="product-actions">
+                  <button class="product-btn btn-light" type="button" data-action="details">View Details</button>
+                  <button class="product-btn btn-dark" type="button" data-action="cart">Add to Cart</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card" data-category="festive" data-name="Elegant Anarkali Suit">
+              <div class="product-image-wrap">
+                <button class="wishlist-btn" type="button" aria-label="Add Elegant Anarkali Suit to wishlist">♡</button>
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Elegant Anarkali Suit" />
+              </div>
+              <div class="product-body">
+                <div class="product-row">
+                  <span class="product-category">Festive</span>
+                  <span class="product-price">₹1,899</span>
+                </div>
+                <h3 class="product-name">Elegant Anarkali Suit</h3>
+                <div class="product-actions">
+                  <button class="product-btn btn-light" type="button" data-action="details">View Details</button>
+                  <button class="product-btn btn-dark" type="button" data-action="cart">Add to Cart</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card" data-category="casual" data-name="Casual Women's Top">
+              <div class="product-image-wrap">
+                <button class="wishlist-btn" type="button" aria-label="Add Casual Women's Top to wishlist">♡</button>
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80" alt="Casual Women's Top" />
+              </div>
+              <div class="product-body">
+                <div class="product-row">
+                  <span class="product-category">Casual</span>
+                  <span class="product-price">₹599</span>
+                </div>
+                <h3 class="product-name">Casual Women's Top</h3>
+                <div class="product-actions">
+                  <button class="product-btn btn-light" type="button" data-action="details">View Details</button>
+                  <button class="product-btn btn-dark" type="button" data-action="cart">Add to Cart</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card" data-category="festive" data-name="Festive Lehenga">
+              <div class="product-image-wrap">
+                <button class="wishlist-btn" type="button" aria-label="Add Festive Lehenga to wishlist">♡</button>
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Festive Lehenga" />
+              </div>
+              <div class="product-body">
+                <div class="product-row">
+                  <span class="product-category">Festive</span>
+                  <span class="product-price">₹2,499</span>
+                </div>
+                <h3 class="product-name">Festive Lehenga</h3>
+                <div class="product-actions">
+                  <button class="product-btn btn-light" type="button" data-action="details">View Details</button>
+                  <button class="product-btn btn-dark" type="button" data-action="cart">Add to Cart</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card" data-category="ethnic" data-name="Cotton Kurti Set">
+              <div class="product-image-wrap">
+                <button class="wishlist-btn" type="button" aria-label="Add Cotton Kurti Set to wishlist">♡</button>
+                <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=80" alt="Cotton Kurti Set" />
+              </div>
+              <div class="product-body">
+                <div class="product-row">
+                  <span class="product-category">Ethnic</span>
+                  <span class="product-price">₹999</span>
+                </div>
+                <h3 class="product-name">Cotton Kurti Set</h3>
+                <div class="product-actions">
+                  <button class="product-btn btn-light" type="button" data-action="details">View Details</button>
+                  <button class="product-btn btn-dark" type="button" data-action="cart">Add to Cart</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card" data-category="western" data-name="Western Midi Dress">
+              <div class="product-image-wrap">
+                <button class="wishlist-btn" type="button" aria-label="Add Western Midi Dress to wishlist">♡</button>
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80" alt="Western Midi Dress" />
+              </div>
+              <div class="product-body">
+                <div class="product-row">
+                  <span class="product-category">Western</span>
+                  <span class="product-price">₹1,099</span>
+                </div>
+                <h3 class="product-name">Western Midi Dress</h3>
+                <div class="product-actions">
+                  <button class="product-btn btn-light" type="button" data-action="details">View Details</button>
+                  <button class="product-btn btn-dark" type="button" data-action="cart">Add to Cart</button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2>Special Offers</h2>
+            <p class="subtitle">Handpicked savings for your next wardrobe update and celebration-ready looks.</p>
+          </div>
+
+          <div class="promo-row">
+            <article class="promo-card">
+              <span class="tag">Best Sellers</span>
+              <h3>Top Picks</h3>
+              <p>Discover customer favorites loved for effortless elegance, comfort, and premium finishing.</p>
+            </article>
+
+            <article class="promo-card">
+              <span class="tag">Limited Time</span>
+              <h3>New Arrivals</h3>
+              <p>Fresh silhouettes in blush tones, soft florals, and graceful drapes for modern festive styling.</p>
+            </article>
+
+            <article class="promo-card">
+              <span class="tag">Extra Savings</span>
+              <h3>Bundle &amp; Save</h3>
+              <p>Shop complementary pieces for festive occasions and earn exciting savings on curated sets.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <h2>Reviews from Our Customers</h2>
+            <p class="subtitle">Sample feedback to showcase how the boutique experience feels for real shoppers.</p>
+          </div>
+
+          <div class="testimonial-grid">
+            <article class="testimonial-card">
+              <div class="stars" aria-label="Five star review">★★★★★</div>
+              <p class="testimonial-text">
+                “The design, fabric, and fit were absolutely beautiful. I wore the saree for a family function and felt effortlessly elegant.”
+              </p>
+              <div class="reviewer">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80" alt="Customer Aisha" />
+                <div>
+                  <strong>Aisha Sharma</strong>
+                  <span>Wedding guest</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="stars" aria-label="Five star review">★★★★★</div>
+              <p class="testimonial-text">
+                “Lovely boutique experience from start to finish. The Anarkali suit looked premium and the styling suggestions were spot on.”
+              </p>
+              <div class="reviewer">
+                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=300&q=80" alt="Customer Neha" />
+                <div>
+                  <strong>Neha Kapoor</strong>
+                  <span>Festive shopper</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="stars" aria-label="Five star review">★★★★★</div>
+              <p class="testimonial-text">
+                “The collection feels premium yet wearable. The fabrics are soft, the colors are flattering, and the website is easy to browse.”
+              </p>
+              <div class="reviewer">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" alt="Customer Meher" />
+                <div>
+                  <strong>Meher Singh</strong>
+                  <span>Everyday elegance</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="newsletter" aria-label="Newsletter signup">
+            <div>
+              <span class="eyebrow">Stay in style</span>
+              <h2>Join our newsletter</h2>
+              <p>Get early access to new arrivals, private sale alerts, and styling inspiration from the boutique.</p>
+            </div>
+
+            <form class="newsletter-form" id="newsletterForm" novalidate>
+              <label class="sr-only" for="newsletterEmail" style="position:absolute;left:-9999px;">Email address</label>
+              <input id="newsletterEmail" type="email" name="email" placeholder="Enter your email" aria-label="Email address" required />
+              <button class="btn btn-primary" type="submit">Subscribe</button>
+              <div class="form-msg" id="newsletterMsg" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container about-grid">
+          <div class="about-visual">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Boutique lifestyle fashion portrait" />
+          </div>
+
+          <div class="info-card">
+            <span class="eyebrow">About our boutique</span>
+            <h3>Luxury fashion made beautifully personal.</h3>
+            <p>
+              Elegance Boutique is a modern fashion destination inspired by graceful silhouettes, artisan craftsmanship, and occasion-ready styling. Every collection is curated to help women feel confident, radiant, and undeniably themselves.
+            </p>
+            <ul class="feature-list">
+              <li>Curated collections for weddings, parties, and everyday elegance</li>
+              <li>Premium fabrics, thoughtful tailoring, and refined finishing</li>
+              <li>Custom styling guidance for gifting and special occasions</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container contact-grid">
+          <div class="info-card">
+            <span class="eyebrow">Contact</span>
+            <h3>Let’s create your signature look.</h3>
+            <p>
+              Whether you’re planning a festive wardrobe, gifting a loved one, or styling your next event look, our boutique team is here to help.
+            </p>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div>
+                  <strong>Address</strong><br />
+                  24 Rosewood Avenue, Mumbai, India
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div>
+                  <strong>Phone</strong><br />
+                  <a href="tel:+919876543210">+91 98765 43210</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon">✉️</div>
+                <div>
+                  <strong>Email</strong><br />
+                  <a href="mailto:hello@eleganceboutique.in">hello@eleganceboutique.in</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <span class="eyebrow">WhatsApp Order</span>
+            <h3>Need help choosing the perfect outfit?</h3>
+            <p>Message us directly for styling recommendations, product availability, and order enquiries.</p>
+            <div style="margin-top: 22px;">
+              <a class="btn btn-primary" href="https://wa.me/919876543210?text=Hi%20Elegance%20Boutique%2C%20I%20would%20like%20to%20enquire%20about%20your%20collection." target="_blank" rel="noreferrer">WhatsApp Us</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-wrap">
+        <div class="brand" aria-label="Elegance Boutique footer brand">
+          <div class="brand-mark">E</div>
+          <div class="brand-text">Elegance Boutique</div>
+        </div>
+
+        <div class="socials" aria-label="Social media links">
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="#" aria-label="Facebook">◌</a>
+          <a href="#" aria-label="Pinterest">◍</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal hidden" id="productModal" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-contents">
+          <img id="modalImage" src="" alt="Product preview" />
+          <div class="modal-copy">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:14px;">
+              <span class="eyebrow" id="modalCategory">Ethnic</span>
+              <button class="close-btn" id="closeModal" aria-label="Close product detail">✕</button>
+            </div>
+            <h3 id="modalTitle">Product Name</h3>
+            <p id="modalDescription">A handcrafted boutique favorite designed to bring effortless elegance to every occasion.</p>
+            <div style="margin: 20px 0; font-size: 1.4rem; font-weight: 800; color: var(--text);" id="modalPrice">₹0</div>
+
+            <div>
+              <strong>Size</strong>
+              <div class="size-row" aria-label="Select size">
+                <button class="size-box active" type="button">S</button>
+                <button class="size-box" type="button">M</button>
+                <button class="size-box" type="button">L</button>
+                <button class="size-box" type="button">XL</button>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" id="modalWishlist">Add to Wishlist</button>
+              <button class="btn btn-primary" type="button" id="modalCart">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const cartCountEl = document.getElementById('cartCount');
+      const wishlistCountEl = document.getElementById('wishlistCount');
+      const chips = document.querySelectorAll('.chip');
+      const productCards = document.querySelectorAll('.product-card');
+      const searchInput = document.getElementById('searchInput');
+      const modal = document.getElementById('productModal');
+      const modalImage = document.getElementById('modalImage');
+      const modalCategory = document.getElementById('modalCategory');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalPrice = document.getElementById('modalPrice');
+      const closeModal = document.getElementById('closeModal');
+      const newsletterForm = document.getElementById('newsletterForm');
+      const newsletterMsg = document.getElementById('newsletterMsg');
+
+      const productMap = {
+        'Designer Saree': {
+          image: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=900&q=80',
+          category: 'Ethnic',
+          price: '₹1,499',
+          description: 'A graceful handcrafted saree designed for celebrations, family weddings, and evenings that deserve a statement silhouette.'
+        },
+        'Floral Kurti': {
+          image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+          category: 'Casual',
+          price: '₹799',
+          description: 'Soft florals, breathable fabric, and an easy everyday fit that seamlessly moves from brunch to dusk plans.'
+        },
+        'Party Wear Dress': {
+          image: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80',
+          category: 'Western',
+          price: '₹1,299',
+          description: 'A chic party silhouette with flattering lines and festive energy, perfect for special nights and event dressing.'
+        },
+        'Elegant Anarkali Suit': {
+          image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+          category: 'Festive',
+          price: '₹1,899',
+          description: 'An elegant Anarkali crafted for grand moments, with graceful volume and a luxurious finish for royal styling.'
+        },
+        'Casual Women\'s Top': {
+          image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80',
+          category: 'Casual',
+          price: '₹599',
+          description: 'A relaxed everyday top with soft texture and a flattering fit, ideal for effortless styling any day of the week.'
+        },
+        'Festive Lehenga': {
+          image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+          category: 'Festive',
+          price: '₹2,499',
+          description: 'A statement lehenga for unforgettable celebrations, blending rich details with a designer-inspired silhouette.'
+        },
+        'Cotton Kurti Set': {
+          image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=80',
+          category: 'Ethnic',
+          price: '₹999',
+          description: 'Comfort-first elegance in a breezy cotton set designed for polished casual wear and all-day ease.'
+        },
+        'Western Midi Dress': {
+          image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80',
+          category: 'Western',
+          price: '₹1,099',
+          description: 'A romantic midi dress built for effortless day-to-evening dressing with feminine movement and modern energy.'
+        }
+      };
+
+      function readStorage(key) {
+        try {
+          return JSON.parse(localStorage.getItem(key) || '[]');
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function writeStorage(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+      }
+
+      let cartItems = readStorage('eleganceCart') || [];
+      let wishlistItems = readStorage('eleganceWishlist') || [];
+
+      function renderCounts() {
+        cartCountEl.textContent = cartItems.length;
+        wishlistCountEl.textContent = wishlistItems.length;
+      }
+
+      function toggleWishlist(productName) {
+        if (wishlistItems.includes(productName)) {
+          wishlistItems = wishlistItems.filter(item => item !== productName);
+        } else {
+          wishlistItems.push(productName);
+        }
+
+        writeStorage('eleganceWishlist', wishlistItems);
+        renderCounts();
+
+        document.querySelectorAll('.wishlist-btn').forEach(button => {
+          const card = button.closest('.product-card');
+          if (card && card.dataset.name === productName) {
+            button.classList.toggle('active', wishlistItems.includes(productName));
+            button.textContent = wishlistItems.includes(productName) ? '♥' : '♡';
+          }
+        });
+      }
+
+      function addToCart(productName) {
+        cartItems.push(productName);
+        writeStorage('eleganceCart', cartItems);
+        renderCounts();
+      }
+
+      function updateProductVisibility(filter = 'all', query = '') {
+        productCards.forEach(card => {
+          const matchesFilter = filter === 'all' || card.dataset.category === filter;
+          const matchesQuery = card.dataset.name.toLowerCase().includes(query.toLowerCase());
+          card.classList.toggle('hidden', !(matchesFilter && matchesQuery));
+        });
+      }
+
+      let activeFilter = 'all';
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(item => item.classList.toggle('active', item === chip));
+          activeFilter = chip.dataset.filter;
+          updateProductVisibility(activeFilter, searchInput.value.trim());
+        });
+      });
+
+      searchInput.addEventListener('input', (event) => {
+        updateProductVisibility(activeFilter, event.target.value.trim());
+      });
+
+      document.querySelectorAll('.product-btn[data-action="cart"]').forEach(button => {
+        button.addEventListener('click', (event) => {
+          const card = event.currentTarget.closest('.product-card');
+          const productName = card.dataset.name;
+          addToCart(productName);
+        });
+      });
+
+      document.querySelectorAll('.product-btn[data-action="details"]').forEach(button => {
+        button.addEventListener('click', (event) => {
+          const card = event.currentTarget.closest('.product-card');
+          const name = card.dataset.name;
+          const product = productMap[name];
+
+          if (!product) return;
+
+          modalImage.src = product.image;
+          modalCategory.textContent = product.category;
+          modalTitle.textContent = name;
+          modalDescription.textContent = product.description;
+          modalPrice.textContent = product.price;
+
+          modal.classList.remove('hidden');
+          modal.setAttribute('aria-hidden', 'false');
+        });
+      });
+
+      closeModal.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        modal.setAttribute('aria-hidden', 'true');
+      });
+
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+          modal.classList.add('hidden');
+          modal.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      document.querySelectorAll('.wishlist-btn').forEach(button => {
+        const card = button.closest('.product-card');
+        const productName = card.dataset.name;
+        if (wishlistItems.includes(productName)) {
+          button.classList.add('active');
+          button.textContent = '♥';
+        }
+
+        button.addEventListener('click', () => {
+          toggleWishlist(productName);
+        });
+      });
+
+      document.getElementById('modalWishlist').addEventListener('click', () => {
+        const productName = modalTitle.textContent.trim();
+        toggleWishlist(productName);
+      });
+
+      document.getElementById('modalCart').addEventListener('click', () => {
+        const productName = modalTitle.textContent.trim();
+        addToCart(productName);
+      });
+
+      document.querySelectorAll('.size-box').forEach(sizeButton => {
+        sizeButton.addEventListener('click', () => {
+          document.querySelectorAll('.size-box').forEach(btn => btn.classList.remove('active'));
+          sizeButton.classList.add('active');
+        });
+      });
+
+      newsletterForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const emailInput = document.getElementById('newsletterEmail');
+        const email = emailInput.value.trim();
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          newsletterMsg.textContent = 'Please enter a valid email address.';
+          newsletterMsg.style.color = '#a86865';
+          emailInput.focus();
+          return;
+        }
+
+        newsletterMsg.textContent = 'Thank you! You are subscribed to our boutique updates.';
+        newsletterMsg.style.color = '#5d7b62';
+        newsletterForm.reset();
+      });
+
+      renderCounts();
+      updateProductVisibility();
+    </script>
+  </body>
+</html>
